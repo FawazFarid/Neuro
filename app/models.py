@@ -1,0 +1,2 @@
+class LyricsModels(object):
+	pass

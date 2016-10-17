@@ -1,0 +1,2 @@
+class Lyricsviews(object):
+	pass
