@@ -12,14 +12,19 @@ class Lyricsviews(object):
         }
 
     def find(self, search_criteria):
-        # replace whitespaces with utf-8 v
+        # url encode the search string
         query = urllib.quote(str(search_criteria))
         search_url = 'http://api.genius.com/search?q=' + query
         r = requests.get(search_url, headers=self.headers)
 
         data = r.json()
 
-        print len(data['response']['hits'])
+        hits = data['response']['hits']
+        print len(hits)
+        print 'Song ID\t\t Song Name\t\t Artist'
+        for i in range(len(hits)):
+        	print str(hits[i]['result']['id']) + ' - ' + hits[i]['result']['title']
+
 
     def view(self, song_id):
         # check if there is local copy in database
@@ -39,4 +44,5 @@ class Lyricsviews(object):
 
 
 song = Lyricsviews()
-song.view(378195)
+song.view(2532266)
+# song.find('Heathens')
