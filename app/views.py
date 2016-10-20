@@ -22,7 +22,11 @@ class LyricsViews(object):
         # url encode the search string
         query = urllib.quote(str(search_criteria))
         search_url = self.baseUrl + 'search?q=' + query
-        r = requests.get(search_url, headers=self.headers)
+        try:
+            # Query the Api and return movie info in json
+            r = requests.get(search_url, headers=self.headers)
+        except:
+            raise requests.exceptions.ConnectionError("Connection Problem")
 
         data = r.json()
 
@@ -67,10 +71,4 @@ class LyricsViews(object):
         session.commit()
 
     def clear_db(self):
-    	db.clear_db()
-
-
-
-# song = LyricsViews()
-# # song.add_song(2494028)
-# print song.get_song_by_id(378195)['lyrics']
+        db.clear_db()
