@@ -16,12 +16,19 @@ class DbAbsLayer(object):
     # Database Abstraction Layer
     def __init__(self):
         self.engine = create_engine('sqlite:///neuro.db')
+        # create any tables that don't yet exist
         Base.metadata.create_all(self.engine)
 
-    def createSession(self):
+    def create_session(self):
         Session = sessionmaker(bind=self.engine)
         self.session = Session()
         return self
+
+    def clear_db(self):
+        # drop all tables
+        Base.metadata.drop_all(self.engine)
+        # create tables to maintain schema
+        Base.metadata.create_all(self.engine)
 
 
 class Song(Base):
