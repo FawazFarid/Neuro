@@ -8,7 +8,8 @@ from sqlalchemy import (
     ForeignKey,
     DateTime,
     Float,
-    Text
+    Text,
+    UnicodeText,
 )
 
 Base = declarative_base()
@@ -17,17 +18,19 @@ Base = declarative_base()
 class DbAbsLayer(object):
     def __init__(self):
         self.engine = create_engine('sqlite:///neuro.db')
-
+        Base.metadata.create_all(self.engine)
     def createSession(self):
-        Session = sessionmaker()
-        self.session = Session.configure(bind=self.engine)
+        Session = sessionmaker(bind=self.engine)
+        self.session = Session()
+        return self
+
 
 
 class Song(Base):
     __tablename__ = 'songs'
     id = Column(Integer, primary_key=True)
     name = Column(String(50))
-    lyrics = Column(Text)
+    lyrics = Column(UnicodeText(64))
     artist_id = Column(Integer, ForeignKey('artists.id'))
 
 
