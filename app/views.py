@@ -13,7 +13,7 @@ class LyricsViews(object):
     def __init__(self):
         self.headers = {
             # Access Token
-            'Authorization': 'Bearer I01LPneQJjxNd9qsMdOukM2Z64MzuUekMRnuxubPGWvpL90WncPVl0uOYMBpXDny'
+            'Authorization': 'Bearer LqmaZkA-35apMeuQ34H29FfSrxG4cdrsBUMTygtuiqzbzE1NpTzNHAW2aejFt4Qs'
         }
 
         self.baseUrl = 'http://api.genius.com/'
