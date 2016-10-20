@@ -42,6 +42,7 @@ class AppRun(cmd.Cmd):
     def do_save(self, song_id):
         view.save_song(song_id)
 
+    # Clear Database
     def do_clear(self, line):
         click.echo('Continue? [y/n]\n ', nl=False)
         c = click.getchar()
@@ -51,6 +52,10 @@ class AppRun(cmd.Cmd):
             click.echo('Aborted\n ', nl=False)
         else:
             click.echo('Invalid input :(')
+
+    # Clear command line
+    def do_cls(self, arg):
+        click.clear()
 
     def do_EOF(self):
         # Exit
