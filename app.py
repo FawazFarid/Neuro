@@ -27,7 +27,16 @@ def find(view, search_parameters):
 
         table.append([song_id, title, artist])
 
-    click.echo(tabulate(table, table_headers, tablefmt="fancy_grid"))
+    with click.progressbar(range(40000),
+                           label=click.secho(
+                               '\t\t\t\tLoading Data...', blink=True, bold=True),
+                           fill_char=click.style('  ', bg='yellow')
+                           ) as prog_bar:
+        for i in prog_bar:
+            pass
+
+    click.secho(tabulate(table, table_headers,
+                         tablefmt="fancy_grid"), fg='yellow')
 
 
 @cli.command('view')
@@ -35,7 +44,7 @@ def find(view, search_parameters):
 @pass_view
 def view(view, song_id):
     lyrics = view.get_song_by_id(song_id)['lyrics']
-    print(lyrics)
+    click.secho(lyrics, fg='yellow')
 
 
 @cli.command('save')
@@ -48,7 +57,14 @@ def save(view, song_id):
 @cli.command('clear')
 @pass_view
 def clear(view):
-    view.clear_db()
+    click.echo('Continue? [y/n] ', nl=False)
+    c = click.getchar()
+    if c == 'y':
+        view.clear_db()
+    if c == 'n':
+        click.echo('Aborted! ', nl=False)
+    else:
+        click.echo('Invalid input :(')
 
 
 if __name__ == '__main__':
