@@ -23,7 +23,7 @@ class LyricsViews(object):
         query = urllib.quote(str(search_criteria))
         search_url = self.baseUrl + 'search?q=' + query
         try:
-            # Query the Api and return movie info in json
+            # Query the Api and return data in json
             r = requests.get(search_url, headers=self.headers)
         except:
             raise requests.exceptions.ConnectionError("Connection Problem")
@@ -45,6 +45,11 @@ class LyricsViews(object):
         else:
 
             song_url = self.baseUrl + 'songs/' + str(song_id)
+            try:
+                # Query the Api and return song data in json
+                r = requests.get(song_url, headers=self.headers)
+            except:
+                raise requests.exceptions.ConnectionError("Connection Problem")
             r = requests.get(song_url, headers=self.headers)
 
             data = r.json()
