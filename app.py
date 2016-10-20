@@ -10,6 +10,9 @@ class AppRun(cmd.Cmd):
     prompt = "Neuro>>"
 
     def do_find(self, search_parameters):
+        """
+        Returns a list of songs that match the search criteria
+        """
         results = view.search(search_parameters)
 
         table_headers = ['ID', 'Title', 'Artist']
@@ -36,10 +39,16 @@ class AppRun(cmd.Cmd):
                              tablefmt="fancy_grid"), fg='yellow')
 
     def do_view(self, song_id):
+        """
+        View song lyrics based on it's id.
+        """
         lyrics = view.get_song_by_id(song_id)['lyrics']
         click.secho(lyrics, fg='yellow')
 
     def do_save(self, song_id):
+        """
+        Store song details and lyrics locally.
+        """
         view.save_song(song_id)
 
     # Clear Database
