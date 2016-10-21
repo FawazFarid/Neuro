@@ -56,7 +56,7 @@ A few bugs were encountered during the creation of Neuro.
 
 #Resources
 
-1. Beautiful Soup - (https://www.crummy.com/software/BeautifulSoup/bs4/doc/)
+1. [Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/)
 
 2. [Click Documentation](http://www.click.pocoo.org)
 
