@@ -7,9 +7,15 @@
 ## Introduction
 **`Neuro`** is A Command Line Application for Finding Lyrics for a particular song using [Rap Genius API](http://genius.com/developers)
 
+### Back End Dependencies
+*  This app's functionality depends on multiple Python packages including;
+  *  **[Click](http://www.click.pocoo.org)** - Click is a Python package for creating beautiful command line interfaces in a composable way with as little code as necessary
+  *  **[SQLAlchemy ORM](http://docs.sqlalchemy.org/en/latest/orm/)** - This is a powerful and flexible database abstraction layer and object relational mapper that presents a method of associating user-defined Python classes with database tables, and instances of those classes (objects) with rows in their corresponding tables
+  *  **[Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/)** - Beautiful Soup is a Python library for Scraping/pulling data out of HTML and XML files
+
 ## Installation
 
-1. First git clone this project at `https://github.com/FawazFarid`
+1. First git clone this project at `https://github.com/FawazFarid/bc-10-neuro.git`
 
 2. Navigate to the `bc-10-neuro` folder.
 
@@ -39,3 +45,19 @@ You'll need to set your access token before using the library. You can create a 
 ```
 
 At the moment, this library isn't set up for a traditional multi-user OAuth setup - despite the Genius API being [based](https://docs.genius.com/#/authentication-h1) on OAuth. It's built for the use case of just accessing the API with your account. This may change in future.
+
+
+#Bugs
+
+A few bugs were encountered during the creation of Neuro.
+
+1. There is a googleads tag displayed in the lyrics, since the lyrics are scraped from a html page.
+
+
+#Resources
+
+1. Beautiful Soup - (https://www.crummy.com/software/BeautifulSoup/bs4/doc/)
+
+2. [Click Documentation](http://www.click.pocoo.org)
+
+3. [SQLAlchemy](http://docs.sqlalchemy.org/en/latest/)
