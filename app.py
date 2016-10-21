@@ -50,6 +50,7 @@ class AppRun(cmd.Cmd):
         Store song details and lyrics locally.
         """
         view.save_song(song_id)
+        click.echo('Song Saved Succesfully\n ', nl=False) 
 
     # Clear Database
     def do_clear(self, line):
@@ -57,6 +58,7 @@ class AppRun(cmd.Cmd):
         c = click.getchar()
         if c == 'y':
             view.clear_db()
+            click.echo('Database Cleared Succesfully\n ', nl=False)
         elif c == 'n':
             click.echo('Aborted\n ', nl=False)
         else:
